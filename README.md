@@ -1,2 +1,2 @@
 # Auburn
-A small library written in ANSI C using the Raylib library to simulate falling leaves
+A small library written in C99 using the Raylib library to simulate falling leaves
