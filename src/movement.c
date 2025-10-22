@@ -1,11 +1,11 @@
 #include "movement.h"
 
-void init_leaf(struct leaf *leaf) {
+void init_leaf(struct leaf *leaf, float x, float y) {
         leaf->size = 2;
         leaf->mass = 0.001;
         leaf->color = ORANGE;
-        leaf->position.x = 1;
-        leaf->position.y = 0;
+        leaf->position.x = x / PIXELS_PER_METER;
+        leaf->position.y = y / PIXELS_PER_METER;
         leaf->velocity.x = 0;
         leaf->velocity.y = 0;
         leaf->acceleration.x = 0;

@@ -2,7 +2,7 @@
 #include "movement.h"
 #include <stdlib.h>
 
-#define PIXELS_PER_METER 40
+
 
 int main(void)
 {
@@ -12,6 +12,8 @@ int main(void)
         const int screen_height = 768;
         const int virtual_screen_width = 320;
         const int virtual_screen_height = 240;
+
+        double time;
 
         const float virtual_ratio = (float)screen_width / (float)screen_height;
 
@@ -46,7 +48,7 @@ int main(void)
 
         leaves = malloc(1024 * sizeof(*leaves));
 
-        init_leaf(&leaves[0]);
+        init_leaf(&leaves[0], 80, 0);
 
         while (!WindowShouldClose()) {
                 for (i = 0; i < num_leaves; i++) {
