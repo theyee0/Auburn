@@ -12,7 +12,6 @@ void init_leaf(struct leaf *leaf, float x, float y) {
         leaf->acceleration.y = 0;
 }
 
-
 Vector2 calc_drag(struct leaf leaf) {
         Vector2 force;
 
