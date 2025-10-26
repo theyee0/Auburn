@@ -1,6 +1,31 @@
 #include "fluids.h"
 #include <assert.h>
 
+void init_model(struct fluid_model **fluid, int width, int height, float diffusion_rate, float viscosity) {
+        *fluid = malloc(sizeof(**fluid));
+
+        (*fluid)->height = height;
+        (*fluid)->width = width;
+        (*fluid)->diffusion_rate = diffusion_rate;
+        (*fluid)->viscosity = viscosity;
+
+        (*fluid)->density = malloc((width + 2) * sizeof(*(*fluid)->density));
+        (*fluid)->velocity_x = malloc((width + 2) * sizeof(*(*fluid)->velocity_x));
+        (*fluid)->velocity_y = malloc((width + 2) * sizeof(*(*fluid)->velocity_y));
+
+        for (int i = 0; i < width + 2; i++) {
+                (*fluid)->density[i] = malloc((height + 2) * sizeof(**(*fluid)->density));
+                (*fluid)->velocity_x[i] = malloc((height + 2) * sizeof(**(*fluid)->velocity_x));
+                (*fluid)->velocity_y[i] = malloc((height + 2) * sizeof(**(*fluid)->velocity_y));
+        }
+}
+
+void zero_buffer(struct fluid_model *fluid, float **buffer) {
+        for (int i = 0; i < fluid->width + 2; i++) {
+                memset(buffer[i], 0, (fluid->height + 2) * sizeof(*buffer[i]));
+        }
+}
+
 void swap_buffers(struct fluid_model **fluid, struct fluid_model **source) {
         void *tmp;
 

@@ -2,6 +2,7 @@
 #define __FLUIDS_H
 
 #include <stdlib.h>
+#include <string.h>
 
 /* Implementation adapted from the paper
    https://graphics.cs.cmu.edu/nsp/course/15-464/Fall09/papers/StamFluidforGames.pdf */
@@ -21,6 +22,9 @@ enum boundary_type {
         HORIZONTAL,
         VERTICAL
 };
+
+void init_model(struct fluid_model **fluid, int width, int height, float diffusion_rate, float viscosity);
+void zero_buffer(struct fluid_model *fluid, float **buffer);
 
 void swap_buffers(struct fluid_model **fluid, struct fluid_model **source);
 void simulate_boundary(struct fluid_model *fluid, float **density, enum boundary_type type);
