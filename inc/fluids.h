@@ -27,16 +27,20 @@ void simulate_boundary(struct fluid_model *fluid, float **density, enum boundary
 void add_source(struct fluid_model *fluid, float **density,
                 struct fluid_model *disturbance, float **disturbance_density,
                 float dt);
-void diffuse(struct fluid_model *fluid, float **density,
+void diffuse(struct fluid_model *fluid,
+             enum boundary_type type,
+             float **density,
              struct fluid_model *source, float **source_density,
              float dt);
-void advect(struct fluid_model *fluid, float **density,
+void advect(struct fluid_model *fluid,
+            enum boundary_type type,
+            float **density,
             struct fluid_model *source, float **source_density,
             float **velocity_x, float **velocity_y,
             float dt);
 
 void step_density(struct fluid_model **fluid, struct fluid_model **source,
-                  struct fluid_model *disturbance, float dt);
+                  float dt);
 void step_velocity(struct fluid_model **fluid, struct fluid_model **source, float dt);
 void restore_mass(struct fluid_model *fluid, struct fluid_model *source);
 
