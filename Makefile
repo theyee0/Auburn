@@ -29,7 +29,7 @@ clean:
 	-rm -rf $(OBJ_DIR)
 	-rm $(NAME)
 
-debug: CFLAGS += -g -fsanitize=address -Werror
+debug: CFLAGS += -g -fsanitize=address
 debug: $(NAME)
 
 release: CFLAGS += -O3 -flto -Werror
