@@ -24,6 +24,7 @@ enum boundary_type {
 };
 
 void init_model(struct fluid_model **fluid, int width, int height, float diffusion_rate, float viscosity);
+void checker_buffer(struct fluid_model *fluid, float **buffer);
 void zero_buffer(struct fluid_model *fluid, float **buffer);
 
 void swap_buffers(struct fluid_model **fluid, struct fluid_model **source);

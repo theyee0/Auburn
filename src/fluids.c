@@ -20,6 +20,22 @@ void init_model(struct fluid_model **fluid, int width, int height, float diffusi
         }
 }
 
+void checker_buffer(struct fluid_model *fluid, float **buffer) {
+        int M = fluid->width;
+        int N = fluid->height;
+        int block_size = 64;
+
+        for (int x = 1; x <= M; x++) {
+                for (int y = 1; y <= N; y++) {
+                        if (((x / block_size) % 2) ^ ((y / block_size) % 2)) {
+                                buffer[x][y] = 1;
+                        } else {
+                                buffer[x][y] = 0;
+                        }
+                }
+        }
+}
+
 void zero_buffer(struct fluid_model *fluid, float **buffer) {
         for (int i = 0; i < fluid->width + 2; i++) {
                 memset(buffer[i], 0, (fluid->height + 2) * sizeof(*buffer[i]));
