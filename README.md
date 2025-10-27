@@ -1,10 +1,14 @@
-# Auburn
+z# Auburn
 A small library written in C99 using the Raylib library to simulate falling leaves.
 
 The program implements a basic fluid simulator to generate somewhat randomized leaf movement. I stayed conservative with the effect on the leaves so that the general effect is still of leaves falling down.
 
 # Demo
-[Video Coming Soon...]
+
+
+https://github.com/user-attachments/assets/f259a03a-a974-43f3-927a-83f2effefdf8
+
+
 
 # Running
 For linux users, the `auburn` executable is provided. You can run it through the command line:
