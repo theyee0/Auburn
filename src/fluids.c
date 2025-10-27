@@ -75,6 +75,8 @@ void simulate_boundary(struct fluid_model *fluid, float **density, enum boundary
 void add_source(struct fluid_model *fluid, float **density,
                 struct fluid_model *disturbance, float **disturbance_density,
                 float dt) {
+        assert(fluid->height == disturbance->height && fluid->width == disturbance->width);
+
         /* Add all density values cell-wise */
         for (int i = 0; i < fluid->width + 2; i++) {
                 for (int j = 0; j < fluid->height + 2; j++) {
@@ -200,7 +202,6 @@ void step_velocity(struct fluid_model **fluid, struct fluid_model **source, floa
                (*source)->velocity_x, (*source)->velocity_y, dt);
         advect(*fluid, VERTICAL, (*fluid)->velocity_y, *source, (*source)->velocity_y,
                (*source)->velocity_x, (*source)->velocity_y, dt);
-        
 
         restore_mass(*fluid, *source);
 }
